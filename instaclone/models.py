@@ -13,7 +13,7 @@ class Profile(models.Model):
     
 class Post(models.Model):
     pic = models.ImageField(upload_to = 'images/')
-    caption = models.CharField(blank=True,max_length = 255)
+    caption = models.CharField(blank=True,max_length = 200)
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     like = models.IntegerField(default=0)
 
