@@ -29,3 +29,11 @@ class Comments(models.Model):
 
     def __str__(self):
         return f'{self.username}'
+    
+    
+class Following(models.Model):
+    username = models.CharField(blank=True,max_length = 255)
+    followed = models.CharField(blank=True,max_length = 255)
+
+    def __str__(self):
+        return f'{self.username}'
