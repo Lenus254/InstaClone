@@ -12,3 +12,6 @@ urlpatterns=[
     # url(r'^timeline$', views.timeline, name='timeline'),
     # url(r'^edit_profile$', views.edit_profile, name='edit'),
 ]
+
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
