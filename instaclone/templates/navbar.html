@@ -17,13 +17,13 @@
                     <span class="icon-bar"></span>
                 </div>
             </div>
-            <div class="nav navbar-nav navbar-left">
+            <div class="nav navbar-nav navbar-right">
                 <ul class="nav">
                     
 
                     
                     <li class="nav-item">
-                        <form action="{%url 'profileresults' %}" role="search" class="form-inline" style="margin-top:1%;">
+                        <form action="{%url 'profileresults' %}" role="search" class="form-inline" style="margin-top:1%; padding-right: 20px;">
                             <input type="text" style="width:300px;background: transparent;" class="form-control" placeholder="Search by username"
                                 name="username">
                         </form>
@@ -39,11 +39,11 @@
                         </a>
                     </li> -->
                     <li class="dropdown" id="icon">
-                        <a href="" class="nav-link" lass="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="" class="nav-link" lass="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false" >
                             <i class="fas fa-user"></i>
                         </a>
                         {% if user.is_authenticated %}
-                            <ul class="dropdown-menu" role="menu" style="background-color:#131413;">
+                            <ul class="dropdown-menu" role="menu" style="background-color:#c1d1c1; color: white;">
                               <li>
                                 <a href="{%url 'profile' %}">Account</a>
                               </li>
