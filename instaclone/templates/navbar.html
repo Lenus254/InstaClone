@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <div class="nav sticky-top" role="navigation" id="colored-nav">
+    <div class="nav bg-dark" role="navigation" id="colored-nav">
         <div class="container-fluid">
             <div class="navbar-header">
                 <div>
@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                 </div>
             </div>
-            <div class="nav navbar-nav navbar-right">
+            <div class="nav navbar-nav navbar-left ">
                 <ul class="nav">
                     
 
@@ -28,10 +28,9 @@
                                 name="username">
                         </form>
                     </li>
-                    <!-- <li id="icon">
-                        <a href="" class="nav-link">
-                            <i class="fas fa-compass"></i>
-                        </a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'timeline' %}">
+                            <i class="fas fa-th"></i>View Posts</a>
                     </li>
                     <li id="icon">
                         <a href="" class="nav-link" id="heart">

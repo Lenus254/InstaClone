@@ -58,4 +58,31 @@ def search(request):
         else:
             message = "The username you are searching for does not exist.Thank you for visiting InstaNight."
             return render(request, 'notfound.html',{"message":message})
-    
+        
+@login_required(login_url='/accounts/login/')
+def timeline(request):
+    users = User.objects.all()
+    posts = Post.objects.all()
+    follows = Following.objects.all()
+    comments = Comments.objects.all()
+    if request.method=='POST' and 'follow' in request.POST:
+        following=Following(username=request.POST.get("follow"),followed=request.user.username)
+        following.save()
+        return redirect('timeline')
+    elif request.method=='POST' and 'comment' in request.POST:
+        comment=Comments(comment=request.POST.get("comment"),
+                        post=int(request.POST.get("posted")),
+                        username=request.POST.get("user"),
+                        count=0)
+        comment.save()
+        comment.count=F('count')+1
+        return redirect('timeline')
+    elif request.method=='POST' and 'post' in request.POST:
+        posted=request.POST.get("post")
+        for post in posts:
+            if (int(post.id)==int(posted)):
+                post.like+=1
+                post.save()
+        return redirect('timeline')
+    else:
+        return render(request, 'timeline.html',{"users":users,"follows":follows,"posts":posts,"comments":comments})
