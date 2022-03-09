@@ -86,3 +86,22 @@ def timeline(request):
         return redirect('timeline')
     else:
         return render(request, 'timeline.html',{"users":users,"follows":follows,"posts":posts,"comments":comments})
+    
+    
+@login_required(login_url='/accounts/login/')
+def edit_profile(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+                Profile.objects.filter(id=current_user.profile.id).update(bio=form.cleaned_data["bio"])
+                profile = Profile.objects.filter(id=current_user.profile.id).first()
+                profile.profile_pic.delete()
+                profile.profile_pic=form.cleaned_data["profile_pic"]
+                profile.save()
+        return redirect('profile')
+
+    else:
+        form = ProfileForm()
+    
+    return render(request, 'edit_profile.html',{"form": form})    
