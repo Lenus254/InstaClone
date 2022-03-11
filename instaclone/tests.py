@@ -20,7 +20,7 @@ class CommentTestClass(TestCase):
     def setUp(self):
         self.first=Comments(post=1,
                             username='lenas',
-                            comment='Great post',
+                            comment='Great post for nature',
                             date='May 24, 2019, 12:41 a.m.',
                             count=0)
 
